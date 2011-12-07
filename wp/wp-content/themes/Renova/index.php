@@ -14,39 +14,40 @@
                     	$thumbID = get_the_post_thumbnail( $post->ID, 'thumbnail', $imgsrcparam ); ?>
 
 	                    <a class="art" href="<?php the_permalink() ?>" id="post-<?php the_ID(); ?>">
-	                        <h2><?php the_title(); ?></h2>
+                                <h2><?php the_title(); ?></h2>
 	                    
 	                        <?php echo "$thumbID"; ?>
 	                        
 	                        <?php the_excerpt(); ?>
+                                isbn|nxb|pages|muc
 	                    </a>
 
-          <?php } elseif ( 2 == $first && is_home() && !is_paged() ) { ?>
+          <?php } //elseif ( 2 == $first && is_home() && !is_paged() ) { ?>
           
                     	<?php
-                    	$imgsrcparam = array(
-						'class'	=> "prv",
-						'alt'	=> trim(strip_tags( $post->post_excerpt )),
-						'title'	=> trim(strip_tags( $post->post_title )),
-						);
-                    	$thumbID = get_the_post_thumbnail( $post->ID, 'thumbnail', $imgsrcparam ); ?>
+//                    	$imgsrcparam = array(
+//						'class'	=> "prv",
+//						'alt'	=> trim(strip_tags( $post->post_excerpt )),
+//						'title'	=> trim(strip_tags( $post->post_title )),
+//						);
+//                    	$thumbID = get_the_post_thumbnail( $post->ID, 'thumbnail', $imgsrcparam ); ?>
                     	
-	                    <a class="art" href="<?php the_permalink() ?>" id="post-<?php the_ID(); ?>">
-	                        <h2><?php the_title(); ?></h2>
+<!--	                    <a class="art" href="<?php //the_permalink() ?>" id="post-<?php //the_ID(); ?>">-->
+<!--	                        <h2><?php //the_title(); ?></h2>-->
 	                        
-	                          <?php echo "$thumbID"; ?>
+	                          <?php //echo "$thumbID"; ?>
 	                        
-	                        <?php the_excerpt(); ?>
-	                    </a>
+	                        <?php //the_excerpt(); ?>
+<!--	                    </a>-->
 	                    
           
-          <?php } else { ?>
+          <?php //} //else { ?>
          
-                <a class="art sm" href="<?php the_permalink() ?>">
-                    <h2><?php the_title(); ?></h2>
-                </a>
+<!--                <a class="art sm" href="<?php //the_permalink() ?>">
+                    <h2><?php //the_title(); ?></h2>
+                </a>-->
 
-          <?php } ?>
+          <?php //} ?>
  
 	<?php endwhile; ?>
 <?php endif; ?>

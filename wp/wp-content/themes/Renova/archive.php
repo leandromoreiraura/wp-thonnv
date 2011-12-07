@@ -1,96 +1,81 @@
 <?php get_header(); ?>
-
-<!--Content Start-->
-<div id="content">
-		  <!--Current Browsing Title Start-->
-        <div id="currentbrowsing">
-                <h1>Currently Browsing</h1>
-                <?php if (have_posts()) : ?>
-                <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
-                <?php /* If this is a category archive */ if (is_category()) { ?>
-                <h2>
-                        <?php single_cat_title(); ?>
-                </h2>
-                <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-                <h2>Posts Tagged &#8216;
-                        <?php single_tag_title(); ?>
-                        &#8217;</h2>
-                <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-                <h2>
-                        <?php the_time('F jS, Y'); ?>
-                </h2>
-                <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-                <h2>
-                        <?php the_time('F, Y'); ?>
-                </h2>
-                <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-                <h2>
-                        <?php the_time('Y'); ?>
-                </h2>
-                <?php /* If this is an author archive */ } elseif (is_author()) { ?>
-                <h2>Author Archive</h2>
-                <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-                <h2>Blog Archives</h2>
-                <?php } ?>
-        </div>
-        <!--Current Browsing Title End-->
+				  <?php /* If this is a category archive */ if (is_category()) { ?>
+                    <div class="pagetitle"><?php printf(__('&#8216;%s&#8217; Category'), single_cat_title('', false)); ?></div>
+                  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
+                    <div class="pagetitle"><?php printf(__('&#8216;%s&#8217;'), single_tag_title('', false) ); ?></div>
+                  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
+                    <div class="pagetitle"><?php printf(_c('%s|Daily archive page'), get_the_time(__('F jS, Y'))); ?></div>
+                  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
+                    <div class="pagetitle"><?php printf(_c('%s|Monthly archive page'), get_the_time(__('F, Y'))); ?></div>
+                  <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
+                    <div class="pagetitle"><?php printf(_c('%s|Yearly archive page'), get_the_time(__('Y'))); ?></div>
+                  <?php /* If this is an author archive */ } elseif (is_author()) { ?>
+                    <div class="pagetitle"><?php _e('Author Archive'); ?></div>
+                  <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
+                    <div class="pagetitle"><?php _e('Blog Archives'); ?></div>
+                  <?php } ?>
+        <div id="cnt">
         
-        <?php if (have_posts()) : ?>
-        <?php while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : ?>
+	<?php while (have_posts()) : the_post();$first++; ?>
+		<?php if ( 1 == $first && !is_paged() ) { ?>
         
-        <!--Archive Post Start-->
-        <div class="archive-post">
-        
-                <!-- Post Time Info , Category and Comments Start-->
-                <div class="info_index">
-                        <div class="info_time">
-                                <?php the_time('j') ?>
-                                <?php the_time(' F ') ?>
-                        </div>
+                  	<a class="art" href="<?php the_permalink() ?>" id="post-<?php the_ID(); ?>">
+	
+                    	<?php
+                    	$imgsrcparam = array(
+						'class'	=> "prv",
+						'alt'	=> trim(strip_tags( $post->post_excerpt )),
+						'title'	=> trim(strip_tags( $post->post_title )),
+						);
+                    	$thumbID = get_the_post_thumbnail( $post->ID, 'thumbnail', $imgsrcparam ); ?>
+                        <h2><?php the_title(); ?></h2>
+                        
+                     	<?php echo "$thumbID"; ?>
+                        
+                        <?php the_excerpt(); ?>
+                    </a>
 
-                        <div class="info_category"> Posted in
-                                <?php the_category(', ') ?>
+          <?php } elseif ( 2 == $first && !is_paged() ) { ?>
+          
+                    	<?php
+                    	$imgsrcparam = array(
+						'class'	=> "prv",
+						'alt'	=> trim(strip_tags( $post->post_excerpt )),
+						'title'	=> trim(strip_tags( $post->post_title )),
+						);
+                    	$thumbID = get_the_post_thumbnail( $post->ID, 'thumbnail', $imgsrcparam ); ?>
+                    	
+                    <a class="art" href="<?php the_permalink() ?>" id="post-<?php the_ID(); ?>">
+                        <h2><?php the_title(); ?></h2>
+    
+	                    <?php echo "$thumbID"; ?>
+                        
+                        <?php the_excerpt(); ?>
+                    </a>
+          
+          <?php } else { ?>
+         
+                <a class="art sm" href="<?php the_permalink() ?>">
+                    <h2><?php the_title(); ?></h2><?php comments_number('<span>0</span>','<span>1</span>','<span>%</span>'); ?>
+                </a>
 
-                			</div>
-       		   </div>
+          <?php } ?>
+ 
+	<?php endwhile; ?>
+<?php endif; ?>
                
-                <div class="comments" >
-                <?php comments_popup_link('0 ', '1 ', '%  '); ?>
-                </div>
-                
-                <!-- Post Time Info , Category, Tags End-->
-                
-                <!-- Title Start-->
-        			 <h1> <a  href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-                <?php the_title(); ?>
-                </a>  </h1>
-                <!-- Title End-->
-                
-                <!-- Text Start-->
-                <div class="archive-post-text">
-                        <?php the_excerpt('excerpt_length', 'new_excerpt_length'); ?>
-                </div>
-                <!-- Text End-->
-                
-        </div>
-        <!--Archive Post End-->
         
-        <?php comments_template(); ?> <!--Comments-->
-        <?php endwhile; else: ?>
-        <h1>Not Found</h1>
-        <p>
-                <?php _e('Sorry, no posts matched your criteria.'); ?>
-        </p>
-        <?php endif; ?>
+        
+        
+  
 
-		  <!--Navigation Post Link Start -->
-        <div id="navigation">
-        <div class="nextright"><?php previous_posts_link('New Entries &raquo;') ?></div>
-        <div class="prevleft"><?php next_posts_link(' &laquo; Older Entries','') ?></div>
-        </div>
-         <!--Navigation Post Link Start -->
+		<?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
         
-        <?php endif; ?>
-</div>
-<!--Content End-->
+        
+        
+
+
+        
+        </div>
 <?php get_footer(); ?>

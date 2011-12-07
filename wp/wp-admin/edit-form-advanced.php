@@ -238,6 +238,11 @@ $side_meta_boxes = do_meta_boxes($post_type, 'side', $post);
 <div id="titlewrap">
 	<label class="hide-if-no-js" style="visibility:hidden" id="title-prompt-text" for="title"><?php echo apply_filters( 'enter_title_here', __( 'Enter title here' ), $post ); ?></label>
 	<input type="text" name="post_title" size="30" tabindex="1" value="<?php echo esc_attr( htmlspecialchars( $post->post_title ) ); ?>" id="title" autocomplete="off" />
+        <!-- thonnv -->
+        <input type="text" name="post_isbn" size="30" tabindex="1" value="isbn" id="isbn" autocomplete="off" />
+        <input type="text" name="post_tacgia" size="30" tabindex="1" value="Tác giả" id="tacgia" autocomplete="off" />
+        <input type="text" name="post_nxb" size="30" tabindex="1" value="Nhà xuất bản" id="nxb" autocomplete="off" />
+        <input type="text" name="post_namxb" size="30" tabindex="1" value="Năm xuất bản" id="namxb" autocomplete="off" />
 </div>
 <div class="inside">
 <?php
