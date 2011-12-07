@@ -3,7 +3,7 @@
         
 <?php if (have_posts()) : ?>
 	<?php while (have_posts()) : the_post();$first++; ?>
-		<?php if ( 1 == $first && is_home() && !is_paged() ) { ?>
+		<?php if ( is_home() && !is_paged() ) { ?>
         
                     	<?php
                     	$imgsrcparam = array(

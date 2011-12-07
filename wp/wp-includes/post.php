@@ -2427,7 +2427,7 @@ function wp_insert_post($postarr, $wp_error = false) {
 		'ping_status' => get_option('default_ping_status'), 'post_parent' => 0,
 		'menu_order' => 0, 'to_ping' =>  '', 'pinged' => '', 'post_password' => '',
 		'guid' => '', 'post_content_filtered' => '', 'post_excerpt' => '', 'import_id' => 0,
-		'post_content' => '', 'post_title' => '');
+		'post_content' => '', 'post_title' => '', 'post_isbn' => 'xxx');
 
 	$postarr = wp_parse_args($postarr, $defaults);
 

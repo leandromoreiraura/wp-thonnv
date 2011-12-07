@@ -13,6 +13,7 @@
  *
  * @since 2.5.0
  */
+echo "xxxxxxxxxxxxxxxxx: esc_url( admin_url( 'post.php' ) )"; 
 function wp_dashboard_setup() {
 	global $wp_registered_widgets, $wp_registered_widget_controls, $wp_dashboard_control_callbacks;
 	$wp_dashboard_control_callbacks = array();
@@ -528,6 +529,12 @@ function wp_dashboard_quick_press() {
 		<h4 id="quick-post-title"><label for="title"><?php _e('Title') ?></label></h4>
 		<div class="input-text-wrap">
 			<input type="text" name="post_title" id="title" tabindex="1" autocomplete="off" value="<?php echo esc_attr( $post->post_title ); ?>" />
+                        <!-- thonnv -->
+        <input type="text" name="post_isbn" size="30" tabindex="1" value="isbn" id="isbn" autocomplete="off" />
+        <input type="text" name="post_tacgia" size="30" tabindex="1" value="Tác giả" id="tacgia" autocomplete="off" />
+        <input type="text" name="post_nxb" size="30" tabindex="1" value="Nhà xuất bản" id="nxb" autocomplete="off" />
+        <input type="text" name="post_namxb" size="30" tabindex="1" value="Năm xuất bản" id="namxb" autocomplete="off" />
+
 		</div>
 
 		<?php if ( current_user_can( 'upload_files' ) ) : ?>

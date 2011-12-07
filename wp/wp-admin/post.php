@@ -136,6 +136,9 @@ case 'post-quickpress-save':
 	break;
 
 case 'edit':
+    echo "xxx1: $post_type";
+    echo "xxx2: $post_id";
+    echo "xxx3: $editing";
 	$editing = true;
 
 	if ( empty( $post_id ) ) {
