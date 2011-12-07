@@ -29,7 +29,7 @@
 
 		<?php foreach ($comments as $comment) : ?>
             <li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">
-            <div class="comment-author-info"><span class="comment-author"><?php comment_author() ?></span>, <?php comment_date('d F, Y') ?><?php edit_comment_link(__("Edit This"), ' | '); ?></div>
+            <div class="comment-author-info"><span class="comment-author"><?php comment_author() ?></span>, <?php comment_date('d F, Y') ?><?php edit_comment_link(__("Cập nhật"), ' | '); ?></div>
             <?php comment_text() ?>
             <div class="hr"></div>
             </li>
@@ -64,7 +64,7 @@
 
 <?php if ( is_user_logged_in() ) : ?>
 
-<div class="login"><?php printf(__('Logged in as <a href="%1$s">%2$s</a>.'), get_option('siteurl') . '/wp-admin/profile.php', $user_identity); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php _e('Log out of this account'); ?>"><?php _e('Log out &raquo;'); ?></a></div>
+<div class="login"><?php printf(__('Tài khoản <a href="%1$s">%2$s</a>.'), get_option('siteurl') . '/wp-admin/profile.php', $user_identity); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title=""><?php _e('Đăng xuất &raquo;'); ?></a></div>
 
 <?php endif; ?>
 
@@ -84,8 +84,8 @@
 <?php if ( is_user_logged_in() ) : ?>
 <?php else : ?>
     <div id="uit">
-        <input type="text" name="author" id="author"  onfocus="if(this.value=='Name') this.value='';" onblur="if(this.value=='') this.value='Name';" value="Name" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
-        <input type="text" name="email" id="email"  onfocus="if(this.value=='E-Mail: (required)') this.value='';" onblur="if(this.value=='') this.value='E-Mail: (required)';" value="E-Mail: (required)" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
+        <input type="text" name="author" id="author"  onfocus="if(this.value=='Tên bạn*') this.value='';" onblur="if(this.value=='') this.value='Tên bạn*';" value="Tên bạn*" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
+        <input type="text" name="email" id="email"  onfocus="if(this.value=='E-Mail*') this.value='';" onblur="if(this.value=='') this.value='E-Mail*';" value="E-Mail*" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
 
 <!--    <div class="outbl"><input type="text" name="url" id="url"  onfocus="if(this.value=='Website URL') this.value='';" onblur="if(this.value=='') this.value='Website URL';" value="Website URL" size="22" tabindex="3" /></div>-->
     </div>
@@ -97,7 +97,7 @@
 <!--<p><small><?php printf(__('<strong>XHTML:</strong> You can use these tags: <code>%s</code>'), allowed_tags()); ?></small></p>-->
 
 
-<div class="submit"><div class="outbl sbm"><input name="submit" type="submit" id="submit" tabindex="5" value="Submit comment" /></div>
+<div class="submit"><div class="outbl sbm"><input name="submit" type="submit" id="submit" tabindex="5" value="Gửi nhận xét" /></div>
 <?php comment_id_fields(); ?> 
 </div>
 <?php do_action('comment_form', $post->ID); ?>

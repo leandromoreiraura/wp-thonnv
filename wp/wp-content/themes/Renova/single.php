@@ -9,14 +9,14 @@
     
                 <div class="art" id="post-<?php the_ID(); ?>">
                     <h1><?php the_title(); ?></h1>
-                    <p class="postmetadata"><?php the_author_posts_link(); ?>, <?php the_time(__('F jS, Y')) ?>, <?php printf(__('in %s'), get_the_category_list(', ')); ?></p>
+                    <p class="postmetadata"><?php the_author_posts_link(); ?>, <?php the_time(__('F jS, Y')) ?>, <?php printf(__('mục %s'), get_the_category_list(', ')); ?></p>
                     <div class="entry">
                         <?php the_content(); ?>
                     </div>
                 </div>
                 <div class="comments">
-                    <div id="cmnts"><?php comments_popup_link(__('No Comments'), __('1 Comment'), __('% Comments'), '', __('Comments Closed') ); ?></div>
-                    <div id="cmnts-l"><a href="#comment">Add comment</a></div>
+                    <div id="cmnts"><?php comments_popup_link(__('Chưa có nhận xét'), __('1 nhận xét'), __('% nhận xét'), '', __('Nhận xét đóng') ); ?></div>
+                    <div id="cmnts-l"><a href="#comment">Thêm nhận xét</a></div>
                 </div>
                 <?php comments_template(); ?>
             <?php endwhile; ?>
@@ -24,8 +24,8 @@
    
         <?php else : ?>
     
-            <h2 class="center"><?php _e('Not Found'); ?></h2>
-            <p class="center"><?php _e('Sorry, but you are looking for something that isn&#8217;t here.'); ?></p>
+            <h2 class="center"><?php _e('Không thấy'); ?></h2>
+            <p class="center"><?php _e('Xin lỗi, không tìm thấy thông tin yêu cầu'); ?></p>
             <?php get_search_form(); ?>
     
         <?php endif; ?>
