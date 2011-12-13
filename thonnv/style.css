@@ -42,7 +42,10 @@ body {
 #menu {
 	height: 44px;
 	position:relative;
-	background-color:#aaa;
+/*	background-color:#aaa;*/
+/*        float: left;*/
+        padding-bottom: 5px;
+        clear: both;
 }
 #lg {
 	display: block;
@@ -67,7 +70,7 @@ body {
 }
 #tpmn li a {
 	text-decoration:none;
-	color:#1bcdef;
+	color:#ffffff;
 	padding:0;
 	height:41px;
 	font-size:14px;

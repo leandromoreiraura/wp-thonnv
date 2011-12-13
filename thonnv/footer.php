@@ -5,7 +5,7 @@
                     <td><a href="http://tbook.com" style="color: #006505">TBook.com - Chia sẻ sách điện tử</a></td>
                     <td align="right">
                         <a href="#lg" id="top">
-                            <img alt="Top" src="<?php echo get_option('siteurl') . '/wp-content/themes/Renova/images/tp.png' ?>"/>
+                            <img alt="Top" src="<?php bloginfo('template_url'); ?>/images/tp.png"/>
                         </a>
                     </td>
                 </tr>
