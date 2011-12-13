@@ -46,16 +46,16 @@
                 </div>
                 <div id="menu">
                     <ul id="tpmn">
+                        <li><a href="<?php bloginfo("url");?>"><b>Trang chu</b></a></li>
                         <?php
                         $taxonomy = 'theloai';
                         $terms = get_terms($taxonomy, array('get' => 'all', 'orderby' => 'id'));
                         if ($terms) {
                             foreach ($terms as $term) {
-                                echo '<li>' . '<a href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '><b>' . $term->name.'</b>'. $term->count .'</a></li> ';
+                                echo '<li>' . '<a href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '><b>' . $term->name. $term->count .'</b></a></li> ';
                             }
                         }
                         ?>
-                        <li><a href=""><b>hehe</b></a></li>
                         <li id="cts" class="cat-item cat-item-5 current-cat"><a href="JavaScript:;" onclick="toggle_visibility('top-menu'); changeCssClass('cts'); getElementById('top-menu2').style.display='none'; getElementById('pg').setAttribute('class', '');"><b>Danh mục</b></a></li>
                         <li id="pg"><a href="JavaScript:;" onclick="toggle_visibility('top-menu2'); changeCssClass('pg'); getElementById('top-menu').style.display='none'; getElementById('cts').setAttribute('class', '');"><b>Trang</b></a></li>
                     </ul>
