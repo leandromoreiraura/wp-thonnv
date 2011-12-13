@@ -6,6 +6,7 @@
         <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> <!-- leave this for stats please -->
 
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/reset.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/demo.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 
         <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico" type="image/x-icon" />
@@ -46,17 +47,17 @@
                 </div>
                 <div id="menu">
                     <ul id="tpmn">
-                        <li><a href="<?php bloginfo("url");?>"><b>Trang chu</b></a></li>
+                        <li><a href="<?php bloginfo("url");?>" class="button"><b>Trang chu</b></a></li>
                         <?php
                         $taxonomy = 'theloai';
                         $terms = get_terms($taxonomy, array('get' => 'all', 'orderby' => 'id'));
                         if ($terms) {
                             foreach ($terms as $term) {
-                                echo '<li>' . '<a href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '><b>' . $term->name. $term->count .'</b></a></li> ';
+                                echo '<li>' . '<a class="button" href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '><b>' . $term->name. $term->count .'</b></a></li> ';
                             }
                         }
                         ?>
-                        <li id="cts" class="cat-item cat-item-5 current-cat"><a href="JavaScript:;" onclick="toggle_visibility('top-menu'); changeCssClass('cts'); getElementById('top-menu2').style.display='none'; getElementById('pg').setAttribute('class', '');"><b>Danh mục</b></a></li>
+                        <li id="cts"><a class="button" href="JavaScript:;" onclick="toggle_visibility('top-menu'); changeCssClass('cts'); getElementById('top-menu2').style.display='none'; getElementById('pg').setAttribute('class', '');"><b>Danh mục</b></a></li>
                         <li id="pg"><a href="JavaScript:;" onclick="toggle_visibility('top-menu2'); changeCssClass('pg'); getElementById('top-menu').style.display='none'; getElementById('cts').setAttribute('class', '');"><b>Trang</b></a></li>
                     </ul>
                 </div>
