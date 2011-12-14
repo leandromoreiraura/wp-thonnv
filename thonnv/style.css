@@ -40,11 +40,11 @@ body {
 	background-color:#000;
 }
 #menu {
-	height: 44px;
+	height: 41px;
 	position:relative;
-/*	background-color:#aaa;*/
+	background-color:#000000;
 /*        float: left;*/
-        padding-bottom: 5px;
+        padding-bottom: 1px;
         clear: both;
 }
 #lg {
@@ -58,28 +58,33 @@ body {
 	background-position: left top;
 }
 #tpmn {
-	position:relative;
+	position:absolute;
 	z-index:500;
         left:10px;
-	right:10px;
-	bottom:-1px;
+/*	right:10px;*/
+	right:0px;
+/*	bottom:-1px;*/
 }
 #tpmn li {
 	float:left;
 	height:41px;
 }
 #tpmn li a {
-	text-decoration:none;
-	color:#ffffff;
-	padding:0;
-	height:41px;
+	display:block;
+/*	padding:13px 10px;*/
+        padding:13px 10px;
 	font-size:14px;
+        font-weight:bold;
 }
-#tpmn li a b {
+#tpmn li a span {
+        font-weight: normal;
+}
+/*#tpmn li a b {
 	display:block;
 	padding:13px 10px;
+        padding:13px 10px;
 	font-size:14px;
-}
+}*/
 #tpmn li.active {
 	height:41px;
 }
@@ -104,7 +109,7 @@ body {
 	background-position: left top;	
 	color:#000;
 	display:block;
-	padding:13px 0 13px 10px;
+        padding:13px 0 13px 10px;
 	font-size:14px;
 }
 #top-menu, #top-menu2 {
@@ -119,7 +124,9 @@ body {
 	top:15px;
 }
 #top-menu li a:link, #top-menu li a:visited, #top-menu2 li a:link, #top-menu2 li a:visited {
-	border-top:solid 1px #e3e3e3;
+        border-left:solid 3px #000000;
+        border-right:solid 7px #000000;
+	border-top:solid 1px #000000;
 	padding:15px 10px;
 	display:block;
 	color:#000;
@@ -128,7 +135,7 @@ body {
 	text-decoration:none;
 }
 #top-menu li a:hover, #top-menu2 li a:hover {
-	border-top:solid 1px #46b40a;
+	border-top:solid 1px #000000;
 	padding:15px 10px;
 	display:block;
 	background-color:#46b40a;
@@ -142,7 +149,12 @@ body {
 	font-weight:normal;
 	padding:15px 10px;
 	background-color:#1A1A1A;
-	border-bottom:solid 1px #444;
+	border-bottom:solid 1px #444444;
+}
+#cnt {
+        border-left:solid 3px #000000;
+        border-right:solid 7px #000000;
+        border-top:solid 3px #000000;
 }
 .single #cnt, .page #cnt, .author #cnt {
 	font-size:medium;
@@ -160,7 +172,7 @@ body {
 	height: 80px;
 }
 .art {
-        
+        border-top:solid 3px #000000;
 }
 a.art {
 	color:#FFF !important;
@@ -168,7 +180,7 @@ a.art {
 	text-decoration:none;
 	padding:7px 10px;
 	background-color:#1a1a1a;
-	border-bottom:solid 3px #000000;
+/*	border-bottom:solid 3px #000000;*/
 	overflow:hidden;
 	line-height:1.2;
 }
@@ -234,13 +246,16 @@ a.art.sm span {
 	right:10px;
 	font-size:medium;
 }
+.art1 {
+        border-top:solid 3px #000000;
+}
 a.art1 {
 	color:#FFF !important;
 	display: block;
 	text-decoration:none;
 	padding:7px 10px;
 	background-color:#1a1a1a;
-	border-bottom:solid 3px #000000;
+/*	border-bottom:solid 3px #000000;*/
 	overflow:hidden;
 	line-height:1.2;
 }
@@ -352,6 +367,7 @@ a.art1.sm span {
 }
 .commentlist {
 	word-wrap:break-word;
+        border-top:solid 3px #000000;
 }
 .commentlist a, .login a {
 	color:#46b40a !important;
@@ -398,6 +414,7 @@ a.art1.sm span {
 #respond {
 	border-top:1px solid #444444;
 	padding:7px 10px 0;
+        border-top:solid 3px #000000;
 }
 
 /*########### navigation ##########*/
@@ -468,3 +485,41 @@ a.art1.sm span {
 	margin-right:10px;
         margin-left:10px;
 }
+/*search*/
+.go_mobile{display: none; visibility:hidden; }
+.hidden{display: none; visibility:hidden;}
+ /*Search Form --------------------------------------------------------------------------------------------------------------------- */
+input#s{
+    margin: 0px 0 0px 0;
+    line-height: 35px;
+    height:35px;
+    width: 100%;
+    text-align: left;
+    color: #bbb;
+    font-size: 13px;
+    border:none;
+    letter-spacing: 0px;
+    font-weight: normal;
+    text-indent: 16px;
+    background-color:#fff;
+    background-image:url(images/search_16.png);
+    background-repeat:no-repeat;
+    background-position:0px 12px;
+}
+input#s:focus{
+    background-color: #46b40a;
+    color: #fff;
+}
+.search{
+    padding:0px 0 0 0;
+/*    border-top: 1px solid #000;*/
+}
+div.search{
+    margin: 0 0 0 0;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    padding-left: 3px;
+    padding-right: 7px;
+    background-color:#000;
+}/*per gli altri browser */
+*:first-child + html div.search{margin: 0px 0px;}/*per IE7 */ 

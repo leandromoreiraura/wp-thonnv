@@ -33,11 +33,10 @@
             <?php echo "$thumbID"; ?>
 
             <?php the_excerpt(); ?>
-            <?php the_meta(); ?>
+            <?php the_meta();
+             ?>
             </a>
-
         <?php } //elseif ( 2 == $first && is_home() && !is_paged() ) {   ?>
-
         <?php
 //                    	$imgsrcparam = array(
 //						'class'	=> "prv",
