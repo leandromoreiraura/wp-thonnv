@@ -61,7 +61,12 @@
                         <li id="pg"><a href="JavaScript:;" onclick="toggle_visibility('top-menu2'); changeCssClass('pg'); getElementById('top-menu').style.display='none'; getElementById('cts').setAttribute('class', '');"><b>Trang</b></a></li>
                     </ul>
                 </div>
-                <ul id="top-menu" style="display:none;">
+                <!--Search Start -->
+                <div class="search" >
+                    <?php include (TEMPLATEPATH . '/searchform.php'); ?>
+                    </div>
+<!--                    Search End     -->
+                    <ul id="top-menu" style="display:none;">
                     <?php
                         $data = wp_list_categories('show_count=1&echo=0&title_li=0&depth=1');
 //                    $data = get_terms('theloai', array('get' => 'all', 'orderby' => 'id'));
