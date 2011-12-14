@@ -47,18 +47,22 @@
                 </div>
                 <div id="menu">
                     <ul id="tpmn">
-                        <li><a href="<?php bloginfo("url");?>" class="button"><b>Trang chu</b></a></li>
+                        <li><a href="<?php bloginfo("url");?>" class="button right"><b>Trang chu</b></a></li>
                         <?php
                         $taxonomy = 'theloai';
-                        $terms = get_terms($taxonomy, array('get' => 'all', 'orderby' => 'id'));
+                        $terms = get_terms($taxonomy, array('get' => 'all', 'orderby' => 'id', 'child_of' => '1'));
                         if ($terms) {
                             foreach ($terms as $term) {
-                                echo '<li>' . '<a class="button" href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '><b>' . $term->name. $term->count .'</b></a></li> ';
+                                echo '<li>' . '<a class="button" href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '><b>' . $term->name. '<span>&nbsp;['.$term->count.']</span>'.'</b></a></li> ';
                             }
                         }
+//                        $data = wp_list_categories('show_count=1&echo=0&title_li=0&depth=1');
+//                        $data = preg_replace('/\<a/', ' <a class="button left"', $data);
+//                        $data = preg_replace('/\<\/a\> \((.*)\)/', ' <span>[$1]</span></a>', $data);
+//                        echo $data;
                         ?>
-                        <li id="cts"><a class="button" href="JavaScript:;" onclick="toggle_visibility('top-menu'); changeCssClass('cts'); getElementById('top-menu2').style.display='none'; getElementById('pg').setAttribute('class', '');"><b>Danh mục</b></a></li>
-                        <li id="pg"><a href="JavaScript:;" onclick="toggle_visibility('top-menu2'); changeCssClass('pg'); getElementById('top-menu').style.display='none'; getElementById('cts').setAttribute('class', '');"><b>Trang</b></a></li>
+                        <li id="cts"><a class="button left right" href="JavaScript:;" onclick="toggle_visibility('top-menu'); changeCssClass('cts'); getElementById('top-menu2').style.display='none'; getElementById('pg').setAttribute('class', '');"><b>Danh mục</b></a></li>
+                        <li id="pg"><a class="button" href="JavaScript:;" onclick="toggle_visibility('top-menu2'); changeCssClass('pg'); getElementById('top-menu').style.display='none'; getElementById('cts').setAttribute('class', '');"><b>Trang</b></a></li>
                     </ul>
                 </div>
                 <!--Search Start -->

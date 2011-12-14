@@ -11,8 +11,7 @@
                 <h1><?php the_title(); ?></h1>
                 <p class="postmetadata"><?php the_author_posts_link(); ?>, <?php the_time(__('F jS, Y')) ?>, <?php printf(__('mục %s'), get_the_category_list(', ')); ?></p>
                 <div class="entry">
-            <?php echo get_the_term_list($post->ID, 'theloai','', ', ', '');
-            the_content(); ?>
+            <?php the_content(); ?>
             <?php
             if ("ebook" == get_post_type($post)) {
                 the_meta();
