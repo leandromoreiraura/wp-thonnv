@@ -47,6 +47,29 @@ body {
         padding-bottom: 1px;
         clear: both;
 }
+#category {
+	height: 31px;
+	position:relative;
+	background-color:#000000;
+/*        float: left;*/
+        padding-bottom: 0px;
+        clear: both;
+}
+#category ul {
+        position:absolute;
+	z-index:500;
+        left:10px;
+/*	right:10px;*/
+	right:0px;
+}
+#category ul li {
+	float:left;
+	height:41px;
+}
+#category ul li a {
+        font-size:14px;
+        font-weight:normal;
+}
 #lg {
 	display: block;
 	float: left;
@@ -72,7 +95,7 @@ body {
 #tpmn li a {
 	display:block;
 /*	padding:13px 10px;*/
-        padding:13px 10px;
+        padding:13px 3px;
 	font-size:14px;
         font-weight:bold;
 }
@@ -522,4 +545,4 @@ div.search{
     padding-right: 7px;
     background-color:#000;
 }/*per gli altri browser */
-*:first-child + html div.search{margin: 0px 0px;}/*per IE7 */ 
+*:first-child + html div.search{margin: 0px 0px;}/*per IE7 */

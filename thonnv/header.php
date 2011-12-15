@@ -47,13 +47,30 @@
                 </div>
                 <div id="menu">
                     <ul id="tpmn">
-                        <li><a href="<?php bloginfo("url");?>" class="button right"><b>Trang chu</b></a></li>
+                        <li><a href="<?php bloginfo("url"); ?>" class="button right"><b>Trang chu</b></a></li>
                         <?php
                         $taxonomy = 'theloai';
-                        $terms = get_terms($taxonomy, array('get' => 'all', 'orderby' => 'id', 'child_of' => '1'));
-                        if ($terms) {
+                        $terms = get_terms($taxonomy, array('pad_counts' => true, 'orderby' => 'id')); // 'parent' => 0)
+//                        $terms = get_term_children($tasonomy);
+                        $count = count($terms);
+                        if ($count > 0) {
                             foreach ($terms as $term) {
-                                echo '<li>' . '<a class="button" href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf( __( "View all posts in %s" ), $term->name ) . '" ' . '><b>' . $term->name. '<span>&nbsp;['.$term->count.']</span>'.'</b></a></li> ';
+                                // get children if has
+//                                $term_childs = get_term_children($term->term_id, $taxonomy);
+//                                $count_childs = count($term_childs);
+//                                if ($count_childs > 0) {
+//                                    foreach ($term_childs as $term_child) {
+//                                        $child = get_term_by('id', $term_child, $taxonomy);
+//                                        echo $child->name;
+//                                        echo $child->count;
+//                                    }
+//                                }
+//                                } else {
+                                // show only level 1 term
+                                if ('0' == $term->parent) {
+                                    echo '<li>' . '<a class="button" href="' . esc_attr(get_term_link($term, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $term->name) . '" ' . '><b>' . $term->name . '<span>&nbsp;[' . $term->count . ']</span>' . '</b></a></li> ';
+                                }
+//                                }
                             }
                         }
 //                        $data = wp_list_categories('show_count=1&echo=0&title_li=0&depth=1');
@@ -69,16 +86,10 @@
                 <div class="search" >
                     <?php include (TEMPLATEPATH . '/searchform.php'); ?>
                     </div>
-<!--                    Search End     -->
+                    <!--                    Search End     -->
                     <ul id="top-menu" style="display:none;">
                     <?php
                         $data = wp_list_categories('show_count=1&echo=0&title_li=0&depth=1');
-//                    $data = get_terms('theloai', array('get' => 'all', 'orderby' => 'id'));
-//                    if ($theloailist) {
-//                        foreach ($data as $atheloai) {
-//                            echo '<p>' . $atheloai->name . '</p>';
-//                        }
-//                    }
                         $data = preg_replace('/\<\/a\> \((.*)\)/', ' <span>$1</span></a>', $data);
                         echo $data;
                     ?>
