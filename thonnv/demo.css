@@ -86,7 +86,7 @@ a.button {
 	background-color: #4D90FE;
 /*    font: bold 12px Helvetica, Arial, sans-serif;*/
     text-decoration: none;
-    padding: 7px 12px;
+    padding: 7px 3px;
     position: relative;
     display: inline-block;
     -webkit-transition: border-color .218s;
