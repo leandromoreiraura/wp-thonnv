@@ -6,7 +6,6 @@
     <?php if (have_posts ()) : ?>
 
     <?php while (have_posts ()) : the_post(); ?>
-
             <div class="art" id="post-<?php the_ID(); ?>">
                 <h1><?php the_title(); ?></h1>
                 <p class="postmetadata"><?php the_author_posts_link(); ?>, <?php the_time(__('F jS, Y')) ?>, <?php printf(__('mục %s'), get_the_category_list(', ')); ?></p>
