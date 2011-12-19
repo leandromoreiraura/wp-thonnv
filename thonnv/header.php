@@ -47,7 +47,7 @@
                 </div>
                 <div id="menu">
                     <ul id="tpmn">
-                        <li><a href="<?php bloginfo("url"); ?>" class="button right"><b>Trang chu</b></a></li>
+                        <li><a href="<?php bloginfo("url"); ?>" class="button right"><b>Y/c sach</b></a></li>
                         <?php
                         $taxonomy = 'theloai';
                         $terms = get_terms($taxonomy, array('pad_counts' => true, 'orderby' => 'id')); // 'parent' => 0)
@@ -56,13 +56,14 @@
                         if ($count > 0) {
                             foreach ($terms as $term) {
                                 // get children if has
-//                                $term_childs = get_term_children($term->term_id, $taxonomy);
+//                                $term_childs = get_term_children($termCurrent->term_id, $taxonomy);
 //                                $count_childs = count($term_childs);
 //                                if ($count_childs > 0) {
 //                                    foreach ($term_childs as $term_child) {
 //                                        $child = get_term_by('id', $term_child, $taxonomy);
 //                                        echo $child->name;
 //                                        echo $child->count;
+//                                        echo '<a class="button" href="' . esc_attr(get_term_link($child, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $child->name) . '" ' . '><b>' . $child->name . '<span>&nbsp;[' . $child->count . ']</span>' . '</b></a>';
 //                                    }
 //                                }
 //                                } else {
@@ -87,7 +88,64 @@
                     <?php include (TEMPLATEPATH . '/searchform.php'); ?>
                     </div>
                     <!--                    Search End     -->
-                    <ul id="top-menu" style="display:none;">
+                    <!--category link-->
+                    <div id="category">
+                        <!--        Tbook &rsaquo; Computer &rsaquo; Programming-->
+                        <ul>
+                        <?php
+//                        echo "xxx: ".$post->ID;
+                        $termCurrent = $wp_query->queried_object;
+//                        $termCurrent = wp_get_post_terms($post->ID, $taxonomy);
+                        // show
+                        if ($termCurrent) {
+                        ?>
+                            <li><a href="<?php bloginfo("url"); ?>" class="button"><b>Trang chu</b></a>&rsaquo;
+                            </li >
+                        <?php
+                            // check category or post
+                            if ("" == $termCurrent->name) {
+                                echo '<li>' . '<a class="button1" href="javascript:back();">Quay lai</a></li> ';
+                            } else {
+                                // show term current
+                                $category_list = $category_list . '<li>' . '<a class="button1" href="' . esc_attr(get_term_link($termCurrent, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $termCurrent->name) . '" ' . '>' . $termCurrent->name . '<span>&nbsp;[' . $termCurrent->count . ']</span>' . '</a>&rsaquo;</li> ';
+
+                                // show all children
+                                $term_childs = get_term_children($termCurrent->term_id, $taxonomy);
+                                $count_childs = count($term_childs);
+                                if ($count_childs > 0) {
+                                    foreach ($term_childs as $term_child) {
+                                        $child = get_term_by('id', $term_child, $taxonomy);
+                                        $category_list .= '<li>' . '<a class="button" href="' . esc_attr(get_term_link($child, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $child->name) . '" ' . '>' . $child->name . '<span>&nbsp;[' . $child->count . ']</span>' . '</a>&rsaquo;</li> ';
+                                    }
+                                }
+                                // show father
+                                $term_parent = get_term_by('id', $termCurrent->parent, $taxonomy);
+                                if ($term_parent) {
+                                    $category_list = '<li>' . '<a class="button" href=' . esc_attr(get_term_link($term_parent, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $term_parent->name) . '" ' . '>' . $term_parent->name . '<span>&nbsp;[' . $term_parent->count . ']</span>' . '</a>&rsaquo;</li> ' . $category_list;
+
+                                    while (1) {
+                                        // get parent term
+                                        $term_parent = get_term_by('id', $term_parent->parent, $taxonomy);
+                                        if ($term_parent) {
+                                            $category_list = '<li>' . '<a class="button" href=' . esc_attr(get_term_link(term_parent, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $term_parent->name) . '" ' . '>' . $term_parent->name . '<span>&nbsp;[' . $term_parent->count . ']</span>' . '</a>&rsaquo;</li> ' . $category_list;
+                                        } else {
+                                            break;
+                                        }
+                                    }
+                                }
+                                echo $category_list;
+                            }
+                        } else {
+                        ?>
+                            <li><a href="<?php bloginfo("url"); ?>" class="button1">Trang chu</a>&rsaquo;</li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+
+                </div>
+
+                <ul id="top-menu" style="display:none;">
                     <?php
                         $data = wp_list_categories('show_count=1&echo=0&title_li=0&depth=1');
                         $data = preg_replace('/\<\/a\> \((.*)\)/', ' <span>$1</span></a>', $data);
@@ -95,5 +153,5 @@
                     ?>
                     </ul>
                     <ul id="top-menu2" style="display:none;">
-                    <?php wp_list_pages('title_li=0&depth=1'); ?>
+<?php wp_list_pages('title_li=0&depth=1'); ?>
                 </ul>
