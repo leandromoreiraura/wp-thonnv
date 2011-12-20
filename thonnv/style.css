@@ -83,7 +83,7 @@ body {
 	display: block;
 	float: left;
 	height: 44px;
-	width: 127px;
+	width: 100%;
 	background-image: url(images/logo.gif);
 	background-attachment: scroll;
 	background-repeat: no-repeat;

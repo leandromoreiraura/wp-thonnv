@@ -47,7 +47,8 @@
                 </div>
                 <div id="menu">
                     <ul id="tpmn">
-                        <li><a href="<?php bloginfo("url"); ?>" class="button right"><b>Y/c sach</b></a></li>
+                        <!-- lay page dau tien lam trang yeu cau-->
+                        <li style="float:right;"><a href="<?php echo get_page_link(33); ?>" class="button" ><b><font color="red">Y/c sach</font></b></a></li>
                         <?php
                         $taxonomy = 'theloai';
                         $terms = get_terms($taxonomy, array('pad_counts' => true, 'orderby' => 'id')); // 'parent' => 0)
@@ -79,8 +80,8 @@
 //                        $data = preg_replace('/\<\/a\> \((.*)\)/', ' <span>[$1]</span></a>', $data);
 //                        echo $data;
                         ?>
-                        <li id="cts"><a class="button left right" href="JavaScript:;" onclick="toggle_visibility('top-menu'); changeCssClass('cts'); getElementById('top-menu2').style.display='none'; getElementById('pg').setAttribute('class', '');"><b>Danh mục</b></a></li>
-                        <li id="pg"><a class="button" href="JavaScript:;" onclick="toggle_visibility('top-menu2'); changeCssClass('pg'); getElementById('top-menu').style.display='none'; getElementById('cts').setAttribute('class', '');"><b>Trang</b></a></li>
+                        <!--                        <li id="cts"><a class="button left right" href="JavaScript:;" onclick="toggle_visibility('top-menu'); changeCssClass('cts'); getElementById('top-menu2').style.display='none'; getElementById('pg').setAttribute('class', '');"><b>Danh mục</b></a></li>
+                                                <li id="pg"><a class="button" href="JavaScript:;" onclick="toggle_visibility('top-menu2'); changeCssClass('pg'); getElementById('top-menu').style.display='none'; getElementById('cts').setAttribute('class', '');"><b>Trang</b></a></li>-->
                     </ul>
                 </div>
                 <!--Search Start -->
@@ -90,12 +91,10 @@
                     <!--                    Search End     -->
                     <!--category link-->
                     <div id="category">
-                        <!--        Tbook &rsaquo; Computer &rsaquo; Programming-->
                         <ul>
                         <?php
-//                        echo "xxx: ".$post->ID;
                         $termCurrent = $wp_query->queried_object;
-//                        $termCurrent = wp_get_post_terms($post->ID, $taxonomy);
+//                        $termCurrent = get_the_terms($post->ID, $taxonomy);
                         // show
                         if ($termCurrent) {
                         ?>
@@ -115,7 +114,7 @@
                                 if ($count_childs > 0) {
                                     foreach ($term_childs as $term_child) {
                                         $child = get_term_by('id', $term_child, $taxonomy);
-                                        $category_list .= '<li>' . '<a class="button" href="' . esc_attr(get_term_link($child, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $child->name) . '" ' . '>' . $child->name . '<span>&nbsp;[' . $child->count . ']</span>' . '</a>&rsaquo;</li> ';
+                                        $category_list .= '<li>' . '<a class="button" href="' . esc_attr(get_term_link($child, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $child->name) . '" ' . '>' . $child->name . '<span>&nbsp;[' . $child->count . ']</span>' . '</a></li> ';
                                     }
                                 }
                                 // show father
@@ -145,13 +144,13 @@
 
                 </div>
 
-                <ul id="top-menu" style="display:none;">
-                    <?php
-                        $data = wp_list_categories('show_count=1&echo=0&title_li=0&depth=1');
-                        $data = preg_replace('/\<\/a\> \((.*)\)/', ' <span>$1</span></a>', $data);
-                        echo $data;
-                    ?>
-                    </ul>
-                    <ul id="top-menu2" style="display:none;">
-<?php wp_list_pages('title_li=0&depth=1'); ?>
-                </ul>
+                <!--                <ul id="top-menu" style="display:none;">
+                <?php
+                        //$data = wp_list_categories('show_count=1&echo=0&title_li=0&depth=1');
+                        //$data = preg_replace('/\<\/a\> \((.*)\)/', ' <span>$1</span></a>', $data);
+                        //echo $data;
+                ?>
+                                            </ul>
+                                            <ul id="top-menu2" style="display:none;">-->        
+                <?php //wp_list_pages('title_li=0&depth=1'); ?>
+<!--                </ul>-->
