@@ -120,13 +120,13 @@
                                 // show father
                                 $term_parent = get_term_by('id', $termCurrent->parent, $taxonomy);
                                 if ($term_parent) {
-                                    $category_list = '<li>' . '<a class="button" href=' . esc_attr(get_term_link($term_parent, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $term_parent->name) . '" ' . '>' . $term_parent->name . '<span>&nbsp;[' . $term_parent->count . ']</span>' . '</a>&rsaquo;</li> ' . $category_list;
+                                    $category_list = '<li>' . '<a class="button" href="' . esc_attr(get_term_link($term_parent, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $term_parent->name) . '" ' . '>' . $term_parent->name . '<span>&nbsp;[' . $term_parent->count . ']</span>' . '</a>&rsaquo;</li> ' . $category_list;
 
                                     while (1) {
                                         // get parent term
                                         $term_parent = get_term_by('id', $term_parent->parent, $taxonomy);
                                         if ($term_parent) {
-                                            $category_list = '<li>' . '<a class="button" href=' . esc_attr(get_term_link(term_parent, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $term_parent->name) . '" ' . '>' . $term_parent->name . '<span>&nbsp;[' . $term_parent->count . ']</span>' . '</a>&rsaquo;</li> ' . $category_list;
+                                            $category_list = '<li>' . '<a class="button" href="' . esc_attr(get_term_link(term_parent, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $term_parent->name) . '" ' . '>' . $term_parent->name . '<span>&nbsp;[' . $term_parent->count . ']</span>' . '</a>&rsaquo;</li> ' . $category_list;
                                         } else {
                                             break;
                                         }
