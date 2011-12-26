@@ -114,7 +114,9 @@
                                 if ($count_childs > 0) {
                                     foreach ($term_childs as $term_child) {
                                         $child = get_term_by('id', $term_child, $taxonomy);
-                                        $category_list .= '<li>' . '<a class="button" href="' . esc_attr(get_term_link($child, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $child->name) . '" ' . '>' . $child->name . '<span>&nbsp;[' . $child->count . ']</span>' . '</a></li> ';
+                                        if ($child->parent == $termCurrent->term_id && 0 < $child->count) {
+                                            $category_list .= '<li>' . '<a class="button" href="' . esc_attr(get_term_link($child, $taxonomy)) . '" title="' . sprintf(__("View all posts in %s"), $child->name) . '" ' . '>' . $child->name . '<span>&nbsp;[' . $child->count . ']</span>' . '</a></li> ';
+                                        }
                                     }
                                 }
                                 // show father
@@ -150,7 +152,7 @@
                         //$data = preg_replace('/\<\/a\> \((.*)\)/', ' <span>$1</span></a>', $data);
                         //echo $data;
                 ?>
-                                            </ul>
-                                            <ul id="top-menu2" style="display:none;">-->        
+                                                    </ul>
+                                                    <ul id="top-menu2" style="display:none;">-->
                 <?php //wp_list_pages('title_li=0&depth=1'); ?>
-<!--                </ul>-->
+                <!--                </ul>-->
